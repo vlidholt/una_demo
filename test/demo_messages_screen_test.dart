@@ -730,10 +730,10 @@ void main() {
       final page = find.byType(MessagesConversationPage);
       expect(page, findsOneWidget);
       final bar = find.descendant(of: page, matching: find.byType(AppBar));
-      // The design's 68, the hairline the bar adds under it, and the
-      // margin a phone's bar keeps above its toolbar with no status bar
-      // over it, as in a test.
-      expect(tester.getSize(bar).height, 68 + 1 + 8);
+      // The design's 68 and the hairline the bar adds under it. A filled
+      // bar keeps no margin above its toolbar with no status bar over it,
+      // as in a test: its toolbar has room of its own.
+      expect(tester.getSize(bar).height, 68 + 1);
       Finder inBar(Finder finder) => find.descendant(of: bar, matching: finder);
       expect(inBar(find.text('Omar Rahimi')), findsOneWidget);
       expect(inBar(find.text('Active now')), findsOneWidget);
